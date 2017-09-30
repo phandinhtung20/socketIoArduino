@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Example socket</title>
+    <script src="http://192.168.0.105:3000/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        var socket= io.connect('http://192.168.0.105:3000');
+			  socket.on('hello', function(data){
+				      alert("Xin chào thiết bị có id: "+data.id);
+			  });
+        socket.on('change', function(data) {
+          alert("change "+ data.data);
+        });
+        $('#on').click(function() {
+          socket.emit('den',{data: '1'})
+        });
+        $('#off').click(function() {
+          socket.emit('den',{data: '0'})
+        });
+      });
+    </script>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+  </head>
+  <body>
+    <h1>HELLO WORLD</h1>
+    <table>
+      <tr>
+        <td>Bật đèn</td>
+        <td><button id="on">Bật</button></td>
+      </tr>
+      <tr>
+        <td>Tắt đèn</td>
+        <td><button id="off">Tắt</button></td>
+      </tr>
+    </table>
+  </body>
+</html>
