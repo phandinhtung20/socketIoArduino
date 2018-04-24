@@ -4,7 +4,7 @@ var express= require('express'),
     http=require('http'),
     server= http.createServer(app),
     io= require('socket.io')(server);
-server.listen(port,'192.168.0.105',function(){
+server.listen(port,'192.168.0.102',function(){
   console.log('On server');
 });
 app.use(express.static('publics'));
